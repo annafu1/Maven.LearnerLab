@@ -5,27 +5,28 @@ import org.junit.Test;
 
 public class TestPerson {
     @Test
-    public void TestConstructor() {
+    public void constructorTest(){
         //given
-        String expectedName = "Sarah";
-        Long expectedId = 2134L;
+        long expectedId = 283299;
+        String expectedName="Flender";
+        Person person= new Person(expectedId, expectedName);
         //when
-        String actualName = Person.getName();
-        Long actualId = Person.getId();
+        String actual = person.getName();
+        long actualId = person.getId();
         //then
-        Assert.assertEquals(expectedName, actualName);
+        Assert.assertEquals(expectedName, actual);
         Assert.assertEquals(expectedId, actualId);
     }
-
     @Test
-    public void SetNameTest() {
+    public void setNameTest() {
         //given
-        Person person = new Person();
         String expectedName = "Sarah";
-        //when
-        String actualName = person.setName(expectedName);
+        Person person = new Person(0, null);
         //then
-        Assert.assertEquals(expectedName, actualName);
+        person.setName(expectedName);
+        String actual= person.getName();
+        //then
+        Assert.assertEquals(expectedName, actual);
     }
 
 }

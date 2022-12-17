@@ -4,29 +4,40 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class TestInstructor {
+
     @Test
-    public void implementationTest() {
+    public void testImplementationOfTeacher(){
+        Instructor instructor= new Instructor(0, null);
+        Assert.assertTrue(instructor instanceof Teacher);
+    }
+    @Test
+    public void testImplementationOfPeerson(){
+        Instructor instructor= new Instructor(0, null);
+        Assert.assertTrue(false);
+    }
+    @Test
+    public void testTeach(){
+        //given
+        double expectedStudy=20;
+        Instructor instructor= new Instructor(0, null);
+        Student student = new Student(0, null, 0);
         //when
-        Teacher teacher = (Teacher) (Object) new Instructor();
+        instructor.teach(student, expectedStudy);
+        double actual=student.getNumberOfStudyHours();
         //then
-        Assert.assertTrue(Instructor instanceof Teacher);
+        Assert.assertEquals(expectedStudy, actual);
     }
-
     @Test
-    public void inheritanceTest() {
+    public void testLecture(){
+        //given
+        double expectedStudyHours= 203;
+        Instructor instructor= new Instructor(0, null);
+        Student student = new Student(0, null, 0);
+        Student[] students = new Student[2];
         //when
-        Person person = (Person) (Object) new Instructor();
+        instructor.lecture(students, expectedStudyHours);
+        double actual= student.getNumberOfStudyHours();
         //then
-        Assert.assertTrue(Instructor instanceof Person);
-    }
-
-    @Test
-    public void teachTest() {
-
-    }
-
-    @Test
-    public void lectureTest() {
-
+        Assert.assertEquals(expectedStudyHours,actual);
     }
 }
